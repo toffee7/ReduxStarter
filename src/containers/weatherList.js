@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import SparklinesChart from '../components/sparklinesChart';
+import GoogleMap from '../components/googleMap';
 
 class WeatherList extends Component {
   constructor(props) {
@@ -10,9 +11,11 @@ class WeatherList extends Component {
   renderWeather(cityData) {
     const temps = cityData.list.map(weather => weather.main.temp);
     const humidities = cityData.list.map(weather => weather.main.humidity);
+    const {lat, lon} = cityData.city.coord;
+
     return (
       <tr key={cityData.city.name}>
-        <td>{cityData.city.name}</td>
+        <td><GoogleMap lat={lat} lng={lon} /> </td>
         <td><SparklinesChart data={temps} color={"orange"}/></td>
         <td><SparklinesChart data={humidities} color={"green"}/></td>
       </tr>
