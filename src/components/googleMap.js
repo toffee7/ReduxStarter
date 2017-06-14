@@ -4,15 +4,15 @@ class GoogleMap extends Component {
   constructor(props) {
     super(props);
   }
-  
+
   render() {
     return (
-      <div ref="map" />
+      <div id="mapg" />
     );
   }
 
   componentDidMount() {
-    new google.maps.Map(this.refs.map, {
+    new google.maps.Map(document.getElementById('mapg'), {
       zoom :12,
       center : {
         lat: this.props.lat,
